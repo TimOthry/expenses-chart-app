@@ -26,6 +26,28 @@ body {
     width: 100%;
     height: 100px;
     border-radius: 10px;
+    display: grid;
+    grid-template-areas:
+        "balance-title logo"
+        "balance-value logo";
+}
+
+#balance-title {
+    grid-area: balance-title;
+    margin-left: 20px;
+}
+
+#balance-value {
+    grid-area: balance-value;
+    margin-left: 20px;
+}
+
+#logo {
+    grid-area: logo;
+    align-self: center;
+    justify-self: end;
+    right: 0;
+    margin-right: 20px;
 }
 
 /* Spending component */
