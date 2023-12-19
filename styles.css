@@ -34,12 +34,14 @@ body {
 
 #balance-title {
     grid-area: balance-title;
-    margin-left: 20px;
+    margin: 20px 0px 10px 20px;
+    color: hsl(33, 100%, 98%);
 }
 
 #balance-value {
     grid-area: balance-value;
-    margin-left: 20px;
+    margin: 10px 0px 20px 20px;
+    color: hsl(33, 100%, 98%);
 }
 
 #logo {
