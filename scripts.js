@@ -2,15 +2,15 @@ function fetchData(filePath) {
   fetch(filePath)
   .then(response => response.json())
   .then(data => {
-    changeSquares(data);
+    setSquares(data);
   })
   .catch(error => console.error('Error fetching JSON:', error));
 }
 
-function changeSquares(data) {
+function setSquares(data) {
   for (items in data) {
     var squareDiv = document.getElementById(data[items]["day"]);
-    squareDiv.style.height =  parseInt(data[items]["amount"]) * 2.2 + 'px';
+    squareDiv.style.height =  parseFloat(data[items]["amount"]) * 2.2 + 'px';
   }
   const now = new Date();
   var squareDiv = document.getElementById(data[now.getDay() - 1]["day"]);
