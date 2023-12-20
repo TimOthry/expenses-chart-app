@@ -21,9 +21,26 @@ function setSquares(data) {
 
 function eventHandler(squareDiv, spending) {
   squareDiv.addEventListener("mouseover", () => {
-    squareDiv.style.backgroundColor = 'hsl(186, 34%, 60%)';
-    
+    showTooltip(squareDiv, spending);
   });
+  squareDiv.addEventListener("mouseout", () => {
+    hideTooltip();
+  });
+}
+
+function showTooltip(squareDiv, spending) {
+  const tooltip = document.createElement('div');
+  tooltip.className = 'tooltip';
+  tooltip.textContent = '$' + spending;
+  tooltip.style.color = 'white';
+  tooltip.style.padding = '5px';
+  tooltip.style.backgroundColor = 'hsl(25, 47%, 15%)';
+  squareDiv.insertAdjacentElement('beforebegin', tooltip);
+}
+
+function hideTooltip() {
+  const tooltips = document.querySelectorAll('.tooltip');
+  tooltips.forEach(tooltip => tooltip.parentNode.removeChild(tooltip));
 }
 
 fetchData('./data.json');
