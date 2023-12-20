@@ -8,22 +8,38 @@ function fetchData(filePath) {
 }
 
 function setSquares(data) {
+  const now = new Date();
   for (items in data) {
     var squareDiv = document.getElementById(data[items]["day"]);
     var spending = data[items]["amount"];
     squareDiv.style.height = parseFloat(spending) * 2.2 + 'px';
-    eventHandler(squareDiv, spending);
+    if (data[now.getDay() - 1]["day"] == data[items]["day"]) {
+      squareDiv.style.backgroundColor = 'hsl(186, 34%, 60%)';
+      eventHandler(squareDiv, spending, true);
+    }
+    else {
+      eventHandler(squareDiv, spending, false);
+    }
   }
-  const now = new Date();
-  var squareDiv = document.getElementById(data[now.getDay() - 1]["day"]);
-  squareDiv.style.backgroundColor = 'hsl(186, 34%, 60%)';
 }
 
-function eventHandler(squareDiv, spending) {
+function eventHandler(squareDiv, spending, currentDay) {
   squareDiv.addEventListener("mouseover", () => {
+    if (currentDay) {
+      squareDiv.style.backgroundColor = 'hsl(186, 34%, 60%, 50%)';
+    }
+    else {
+      squareDiv.style.backgroundColor = 'hsl(10, 79%, 65%, 50%)'
+    }
     showTooltip(squareDiv, spending);
   });
   squareDiv.addEventListener("mouseout", () => {
+    if (currentDay) {
+      squareDiv.style.backgroundColor = 'hsl(186, 34%, 60%)';
+    }
+    else {
+      squareDiv.style.backgroundColor = 'hsl(10, 79%, 65%)'
+    }
     hideTooltip();
   });
 }
