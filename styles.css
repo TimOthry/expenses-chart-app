@@ -73,6 +73,7 @@ body {
 
 .bar {
     text-align: center;
+    position: relative;
 }
 
 .square {
@@ -81,3 +82,11 @@ body {
     width: 28.45px;
     height: 70px;
 }
+
+.tooltip {
+    position: absolute;
+    top: -30px;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+  }
